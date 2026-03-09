@@ -61,7 +61,7 @@ Builds upon the simple_nodes example by adding conditional logic and branching:
 
 ```
 .
-├── chatbot.ipynb              # (Advanced example - LLM-based chatbot)
+├── chatbot.ipynb              # (Advanced example - LLM-based chatbot using LangGraph)
 ├── simple_nodes.ipynb         # Basic sequential graph workflow
 ├── graph_with_condition.ipynb # Graph with conditional branching
 ├── main.py                    # Main entry point (if applicable)
@@ -74,3 +74,14 @@ Builds upon the simple_nodes example by adding conditional logic and branching:
 - **LangGraph:** Framework for building stateful, multi-actor applications
 - **Python:** 3.11+
 - **Jupyter:** For interactive notebook exploration
+
+## Chatbot Example
+
+The `chatbot.ipynb` notebook showcases how LangGraph can orchestrate an LLM-based conversational agent.
+
+- **Features:**
+  - Uses OpenAI/other LLM nodes to process user messages
+  - Maintains conversation state within a graph
+  - Demonstrates advanced graph constructs and async interactions
+
+> Refer to `chatbot.ipynb` for a step-by-step walkthrough of building the chatbot workflow.
