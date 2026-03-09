@@ -43,6 +43,42 @@ Builds upon the simple_nodes example by adding conditional logic and branching:
 
 ---
 
+### 3. **tool_call.ipynb**
+Introduces tool calling capabilities in LangGraph, allowing LLMs to interact with external functions:
+
+- **Concepts Covered:**
+  - Binding tools to an LLM using `bind_tools()`
+  - Creating tool nodes with `ToolNode`
+  - Conditional routing based on tool calls using `tools_condition`
+  - Executing tool calls and incorporating results into the conversation
+
+- **Example Workflow:**
+  - User queries for stock prices (e.g., "What is the price of AAPL stock?")
+  - LLM recognizes the intent and calls a custom `get_stock_price` tool
+  - Tool returns the price, and LLM generates a final response
+
+- **Key Takeaway:** Shows how to extend LangGraph with external tools for dynamic, function-based interactions.
+
+---
+
+### 4. **tool_call_agent.ipynb**
+An advanced example building on tool calling, demonstrating agent-like behavior with persistent state and tool integration:
+
+- **Concepts Covered:**
+  - Stateful agent workflows with message history
+  - Tool execution in a graph-based agent loop
+  - Handling multiple tool calls and responses
+  - Integrating LLMs with custom tools for complex tasks
+
+- **Example Workflow:**
+  - Maintains conversation state across interactions
+  - Processes user queries that require tool usage (e.g., data retrieval)
+  - Executes tools and generates coherent responses based on results
+
+- **Key Takeaway:** Illustrates building intelligent agents that can perform actions and maintain context using LangGraph.
+
+---
+
 ## Running the Notebooks
 
 1. Ensure you have the required dependencies installed:
@@ -50,20 +86,31 @@ Builds upon the simple_nodes example by adding conditional logic and branching:
    uv sync
    ```
 
-2. Start a Jupyter server:
+2. For notebooks involving LLM integration (e.g., `chatbot.ipynb`, `tool_call.ipynb`, `tool_call_agent.ipynb`), install Ollama and the required models:
+   - Install Ollama: Follow the instructions at [ollama.ai](https://ollama.ai) for your operating system.
+   - Pull the necessary models:
+     ```bash
+     ollama pull qwen2.5:7b  # For Qwen 2.5 7B model
+     ollama pull phi3:latest  # If using Phi-3 model
+     ```
+   - Ensure Ollama is running in the background before executing LLM-related cells.
+
+3. Start a Jupyter server:
    ```bash
    jupyter notebook
    ```
 
-3. Open and run the desired notebook
+4. Open and run the desired notebook
 
 ## Project Structure
 
 ```
 .
-├── chatbot.ipynb              # (Advanced example - LLM-based chatbot using LangGraph)
+├── chatbot.ipynb              # Advanced LLM-based chatbot using LangGraph
 ├── simple_nodes.ipynb         # Basic sequential graph workflow
 ├── graph_with_condition.ipynb # Graph with conditional branching
+├── tool_call.ipynb            # Tool calling with external functions
+├── tool_call_agent.ipynb      # Agent-like behavior with tools and state
 ├── main.py                    # Main entry point (if applicable)
 ├── pyproject.toml             # Project dependencies
 └── README.md                  # This file
@@ -72,16 +119,19 @@ Builds upon the simple_nodes example by adding conditional logic and branching:
 ## Technologies Used
 
 - **LangGraph:** Framework for building stateful, multi-actor applications
+- **LangChain:** For LLM integration and tool binding
+- **Ollama:** Local LLM runtime for running models like Qwen 2.5
 - **Python:** 3.11+
 - **Jupyter:** For interactive notebook exploration
 
-## Chatbot Example
+## Chatbot and Agent Examples
 
-The `chatbot.ipynb` notebook showcases how LangGraph can orchestrate an LLM-based conversational agent.
+The `chatbot.ipynb`, `tool_call.ipynb`, and `tool_call_agent.ipynb` notebooks showcase advanced LangGraph usage with LLMs:
 
 - **Features:**
-  - Uses OpenAI/other LLM nodes to process user messages
-  - Maintains conversation state within a graph
-  - Demonstrates advanced graph constructs and async interactions
+  - Uses Ollama-based LLMs (e.g., Qwen 2.5) for conversational AI
+  - Maintains conversation state within graphs
+  - Integrates external tools for dynamic interactions
+  - Demonstrates agent-like behavior with tool calling and state management
 
-> Refer to `chatbot.ipynb` for a step-by-step walkthrough of building the chatbot workflow.
+> Refer to the respective notebooks for step-by-step walkthroughs of building conversational workflows and tool-integrated agents.
